@@ -33,7 +33,16 @@ function displayProductList(product){
     deleteButton.innerText = "DELETE";
     pItem.appendChild(deleteButton);
     cart.appendChild(pItem);
+
+      deleteButton.addEventListener("click", function(e){
+      console.log(e.target);
+      removeItem(pItem);
+      // pItem.remove();
+
+    })
   })
+  
+
 }
  
  
@@ -44,9 +53,9 @@ function updateTotalPrice(amount) {
 }
  
 // Function to remove an item
-function removeItem(event) {
-  const item = event.target.closest('li');
-  const price = parseFloat(item.dataset.price);
+function removeItem(item) {
+    // const item = event.target.closest('li');
+  const price = item.price;
   updateTotalPrice(-price);
   item.remove();
 }
@@ -58,5 +67,6 @@ addProductButton.addEventListener("click", function(){
     } else if (productNameInput.value.length <= 2){
       alert("There is No Product with that product name")
     }
-  addProduct();
+  const addedProduct = addProduct();
+  displayProductList(addedProduct);
 })
