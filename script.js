@@ -24,6 +24,18 @@ function addProduct(){
   return newProduct;//return the product so I have access to it
 }
 
+function displayProductList(product){
+  cart.innerHTML = "";//remove li items from last render
+  products.forEach(item =>{
+    const pItem = document.createElement("li");
+    const deleteButton = document.createElement("button");
+    pItem.innerText = `${item.name} $${item.price}`;
+    deleteButton.innerText = "DELETE";
+    pItem.appendChild(deleteButton);
+    cart.appendChild(pItem);
+  })
+}
+ 
  
 // Function to update the total price
 function updateTotalPrice(amount) {
@@ -40,5 +52,11 @@ function removeItem(event) {
 }
 
 addProductButton.addEventListener("click", function(){
-addProduct();
+  console.log(productNameInput.value.length);
+  if(productNameInput.value === ""  || productPriceInput.value === ""){
+        alert("Please Enter a product name and price")
+    } else if (productNameInput.value.length <= 2){
+      alert("There is No Product with that product name")
+    }
+  addProduct();
 })
