@@ -7,11 +7,23 @@ const totalPriceSpan = document.getElementById('total-price');
 let totalPrice = 0;
 let products = []
 
-function addproduct(){
+function addProduct(){
+  let productName = productNameInput.value;
+  let productPrice = productPriceInput.value;
+  let newProduct = {name: productName, price: productPrice}
+  products.push(newProduct);
+  console.log(products);
+  for (let i = 0; i < products.length; i++) {
+    const pName = products[i].name;
+    const pPrice = products[i].price
+    console.log(`Added a ${pName} for $${pPrice}`);
+  }
 
-
-
+  productNameInput.value = "";
+  productPriceInput.value = "";
+  return newProduct;//return the product so I have access to it
 }
+
  
 // Function to update the total price
 function updateTotalPrice(amount) {
@@ -28,30 +40,5 @@ function removeItem(event) {
 }
 
 addProductButton.addEventListener("click", function(){
-  //get value of the inputs and create and object and push to products
-  // if(!productNameInput.value || !productPriceInput.value){
-  //   alert("NO")
-
-  // }
-  let productName = productNameInput.value;
-  let productPrice = productNameInput.value;
-  let newProduct = {name: productName, price: productPrice}
-  products.push(newProduct);
-  console.log(products);
-  for (let i = 0; i < products.length; i++) {
-    const element = products[i].name;
-    console.log(element);
-    
-  }
-  // for(let product of productss){
-  //   let listItem = document.createElement("li");
-  //   listItem.innerText = product;
-  //   cart.appendChild(listItem)
-  // }
-  // console.log(Boolean(productName));
-
-  //Create li tag
-  //add the input content to the li tag
-  //append li to ul
-  
+addProduct();
 })
