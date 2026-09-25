@@ -12,7 +12,7 @@ function addProduct(){
   let productPrice = productPriceInput.value;
   let newProduct = {name: productName, price: productPrice}
   products.push(newProduct);
-  console.log(products);
+
   for (let i = 0; i < products.length; i++) {
     const pName = products[i].name;
     const pPrice = products[i].price
@@ -21,7 +21,7 @@ function addProduct(){
 
   productNameInput.value = "";
   productPriceInput.value = "";
-  return newProduct;//return the product so I have access to it
+  return newProduct;
 }
 
 function displayProductList(product){
@@ -33,18 +33,14 @@ function displayProductList(product){
     deleteButton.innerText = "DELETE";
     pItem.appendChild(deleteButton);
     cart.appendChild(pItem);
-
-      deleteButton.addEventListener("click", function(e){
+    
+    deleteButton.addEventListener("click", function(e){
       console.log(e.target);
-      removeItem(pItem);
-      // pItem.remove();
-
+      removeItem(item, pItem);
     })
   })
-  
-
+  updateTotalPrice(parseFloat(product.price))
 }
- 
  
 // Function to update the total price
 function updateTotalPrice(amount) {
@@ -53,20 +49,23 @@ function updateTotalPrice(amount) {
 }
  
 // Function to remove an item
-function removeItem(item) {
-    // const item = event.target.closest('li');
+function removeItem(item, itemElement) {
+  console.log(item);
   const price = item.price;
   updateTotalPrice(-price);
-  item.remove();
+  itemElement.remove();
 }
 
-addProductButton.addEventListener("click", function(){
-  console.log(productNameInput.value.length);
+addProductButton.addEventListener("click", function(e){
   if(productNameInput.value === ""  || productPriceInput.value === ""){
         alert("Please Enter a product name and price")
     } else if (productNameInput.value.length <= 2){
       alert("There is No Product with that product name")
     }
+
   const addedProduct = addProduct();
   displayProductList(addedProduct);
+  console.log(e);
+  
 })
+
