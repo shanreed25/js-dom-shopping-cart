@@ -21,6 +21,8 @@ function addProduct(){
 
   productNameInput.value = "";
   productPriceInput.value = "";
+
+  productNameInput.focus()//retruns the keyboard users back to the first field after adding
   return newProduct;
 }
 
@@ -28,12 +30,13 @@ function displayProductList(product){
   cart.innerHTML = "";//remove li items from last render
   products.forEach(item =>{
     const pItem = document.createElement("li");
+    pItem.classList.add("cart-item")
     const deleteButton = document.createElement("button");
+    deleteButton.setAttribute("aria-label", `Delete ${item.name}`)
     pItem.innerText = `${item.name} $${item.price}`;
     deleteButton.innerText = "DELETE";
     pItem.appendChild(deleteButton);
     cart.appendChild(pItem);
-    
     deleteButton.addEventListener("click", function(e){
       console.log(e.target);
       removeItem(item, pItem);
@@ -59,8 +62,10 @@ function removeItem(item, itemElement) {
 addProductButton.addEventListener("click", function(e){
   if(productNameInput.value === ""  || productPriceInput.value === ""){
         alert("Please Enter a product name and price")
+        return;
     } else if (productNameInput.value.length <= 2){
       alert("There is No Product with that product name")
+      return;
     }
 
   const addedProduct = addProduct();
