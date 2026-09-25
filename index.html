@@ -12,6 +12,12 @@
     <div id="product-container" role="group" aria-label="Add a product">
         <input type="text" id="product-name" placeholder="Product Name" aria-label="Product Name" required>
         <input type="number" id="product-price" placeholder="Product Price" aria-label="Product Price" required>
+        <label for="quantity">QTY</label>
+        <div>
+            <button type="button" id="decrease" aria-label="Decrease Quantity">-</button>
+            <input type="number" id="quantity" value="1" min="1" max="10" step="1">
+            <button type="button" id="increase" aria-label="Increase Quantity">+</button>
+        </div>
         <button id="add-product">Add Product</button>
     </div>
     <ul id="cart" aria-label="Shopping cart items"></ul>
