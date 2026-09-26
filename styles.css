@@ -3,13 +3,13 @@ body {
   margin: 20px;
   line-height: 1.6;
 }
- 
+
 #product-container {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
- 
+
 #cart {
   display: flex;
   flex-direction: column;
@@ -17,18 +17,40 @@ body {
   list-style: none;
   padding: 0;
 }
- 
+
 .cart-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
 }
- 
+
 .cart-item span {
   flex: 1;
 }
- 
+
 .cart-item button {
   margin-left: 10px;
+}
+
+input,
+.qty, #add-product {
+  border: 1px solid #232131;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.qty button {
+  width: 24px;
+  height: 28px;
+  border: none;
+  background: #b0a6ec;
+  color: var(--text);
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.qty input {
+  border: none;
+  text-align: center;
 }

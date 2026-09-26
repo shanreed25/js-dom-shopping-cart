@@ -56,12 +56,12 @@ function displayProductList(product){
       removeItem(item, pItem);
     })
   })
-  updateTotalPrice(parseFloat(product.price))
+  updateTotalPrice(parseFloat(product.price), product.quantity);
 }
  
 // Function to update the total price
-function updateTotalPrice(amount) {
-  totalPrice += amount;
+function updateTotalPrice(amount, qty) {
+  totalPrice += amount * qty;
   totalPriceSpan.textContent = totalPrice.toFixed(2);
 }
  
