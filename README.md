@@ -10,32 +10,23 @@
 - Efficient DOM manipulation techniques to minimize performance bottlenecks
 
 ### Functionality
-**Allow Users To**
-- Add items to their cart dynamically
-- View the items they have added, along with their prices and quantities
-- Update the quantity of items in the cart, reflecting real-time price changes
-- Remove items from the cart
-
-### Current Status
-- Add Products
+- Can add products with different names and prices
 - Handles attempts to add products with empty names or invalid prices
-- Display Products
+- Display Products: Each product appears in the list with the correct price and quantity
 - Total of all products displays
+- Remove Items: Items are remove from the products list and the total price updates accurately after removing items
+
+## Reflection Questions
+**How did you dynamically create and append new elements to the DOM?**
+> I used a `displayProductlist()` function that builds a list item for every product. An `<li>` with three `<p>` elements, for name, price, quantity, and a delete`<button>`. It then adds the finished `<li>` to the cart. This function is ran eveytiime an item is added.
+
+**What steps did you take to ensure accurate updates to the total price?**
+> I set a `totalPrice` variable and every change to this variable goes through the `updateTotalPrice()` function. If a product is added the function is given its price and quantity and if a product is removed the function is given a negative price and quantity. The same `amount * qty` handles both adding and deleteing.
 
 
-### Add Products:
+**How did you handle invalid input for product name or price?**if 
+> The values are check before they are added if the name, price or quantity is invalid, there is an alert. The return then stops the function early so no bad product reaches the products array. The fields are cleared after adding and focus goes back to the name input.
 
-- [X] Test adding products with different names and prices.
-- [X] Ensure each product appears in the list with the correct price.
+**What challenges did you face when implementing the remove functionality?**
+> Removing an item meant three things had to be updated, the total price, the products list and the list displayed in the page. The delete button listener holds the refernce to both the li element and the product object, This allow the removeItem() function to have what it needs to subtract and which element to remove. I used `findIndex()` to find the product in the array. I made sure to handle the case where `findIndex()` would return -1  because passing -1 to `splice()` would cause it to delete the lat item if no item is found. One limitation that realized was that if 2 products had the same name it deletes the first match.
 
-### Remove Products:
-
-- [X] Test removing products from the cart.
-- [X] Verify that the total price updates accurately after removing items.
-
-### Edge Cases:
-
-- [ ] Attempt to add products with empty names or invalid prices and ensure the application handles these cases gracefully.
-Enhance the App (Optional):
-
-- [ ] Allow users to update the quantity of products in the cart and recalculate the total price.

@@ -7,8 +7,6 @@ const decreaseBtn = document.getElementById("decrease");
 const cart = document.getElementById('cart');
 const totalPriceSpan = document.getElementById('total-price');
 
-const MIN = Number(productQtyInput.min);
-const MAX = Number(productQtyInput.max);
 
 
 let totalPrice = 0;
@@ -45,7 +43,7 @@ function displayProductList(product){
     const nameDisplay = document.createElement("p");
     nameDisplay.innerText = `${item.name}`;
     const priceDisplay = document.createElement("p");
-    priceDisplay.innerText = `${item.price}`;
+    priceDisplay.innerText = `$${Number(item.price).toFixed(2)}`;
     const qtyDisplay = document.createElement("p");
     qtyDisplay.innerText = `${item.quantity}`;
 
@@ -102,10 +100,23 @@ addProductButton.addEventListener("click", function(e){
   if(productNameInput.value === ""  || productPriceInput.value === ""){
         alert("Please Enter a product name and price")
         return;
-    } else if (productNameInput.value.length <= 2){
+    }
+    
+  if (productNameInput.value.length <= 2){
       alert("There is No Product with that product name")
       return;
     }
+
+  if (productPriceInput.value <= 0){
+    alert("Invalid Price, Enter a number greater than 0");
+    return;
+  }
+ 
+  //Number input allow "E" and "e", which is and empty string in the console
+  if (productQtyInput.value === "" || productQtyInput.value == 0 ) {
+    alert("Invalid Quantity");
+    return
+  }
 
   const addedProduct = addProduct();
   displayProductList(addedProduct);
