@@ -31,7 +31,7 @@ function addProduct(){
   productNameInput.value = "";
   productPriceInput.value = "";
   productQtyInput.value = "1";
-
+  console.log(products);
   productNameInput.focus()//retruns the keyboard users back to the first field after adding
   return newProduct;
 }
@@ -46,7 +46,6 @@ function displayProductList(product){
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("aria-label", `Delete ${item.name}`)
     deleteButton.innerText = "DELETE";
-
 
     pItem.appendChild(deleteButton);
     cart.appendChild(pItem);
