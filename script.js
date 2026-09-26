@@ -74,6 +74,15 @@ function removeItem(item, itemElement) {
   const qty = item.quantity;
   updateTotalPrice(-price, qty);
   itemElement.remove();
+
+  //If nothing matches, findIndex() returns -1
+  const itemIndex = products.findIndex(product => product.name === item.name);
+
+  // splice(-1, 1) removes the last item, this check the index first
+  if (itemIndex !== -1) {
+    products.splice(itemIndex, 1);
+  }
+  
 }
 
 
