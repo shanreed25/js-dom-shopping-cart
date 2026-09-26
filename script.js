@@ -81,11 +81,17 @@ addProductButton.addEventListener("click", function(e){
   
 })
 
+qtyInput.addEventListener("change", () => {
+  console.log(qtyInput.value);
+  //get input value
 
+})
 increaseBtn.addEventListener("click", function() {
+  //increase qty input value
     console.log("increase");
 });
 
 decreaseBtn.addEventListener("click", function() {
+  //decrease qty input value
   console.log("decrease");
 });
