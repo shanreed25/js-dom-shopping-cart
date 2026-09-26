@@ -18,6 +18,11 @@ body {
   padding: 0;
 }
 
+.cart-headers{
+  display: flex;
+  justify-content: space-between;
+}
+
 .cart-item {
   display: flex;
   justify-content: space-between;

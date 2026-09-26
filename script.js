@@ -41,13 +41,20 @@ function displayProductList(product){
   products.forEach(item =>{
     const pItem = document.createElement("li");
     pItem.classList.add("cart-item");
-    pItem.innerText = `${item.name} $${item.price} Qty:${item.quantity}`;
+
+    const nameDisplay = document.createElement("p");
+    nameDisplay.innerText = `${item.name}`;
+    const priceDisplay = document.createElement("p");
+    priceDisplay.innerText = `${item.price}`;
+    const qtyDisplay = document.createElement("p");
+    qtyDisplay.innerText = `${item.quantity}`;
 
     const deleteButton = document.createElement("button");
     deleteButton.setAttribute("aria-label", `Delete ${item.name}`)
     deleteButton.innerText = "DELETE";
 
-    pItem.appendChild(deleteButton);
+
+    pItem.append(nameDisplay, priceDisplay, qtyDisplay, deleteButton);
     cart.appendChild(pItem);
 
 
