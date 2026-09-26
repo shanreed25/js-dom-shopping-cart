@@ -1,4 +1,4 @@
-# Shooping Cart
+# Shooping Cart: Dynamic Content Creation
 **Simulates core functionality used in modern e-commerce applications**
 
 > A dynamic shopping cart application to practice and reinforce DOM manipulation skills. The application allow users to add, update, and remove items dynamically while keeping track of the total price.
