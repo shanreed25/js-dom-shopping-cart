@@ -16,8 +16,8 @@ let products = []
 
 function addProduct(){
   const productName = productNameInput.value;
-  const productPrice = productPriceInput.value;
-  const productQty = productQtyInput.value;
+  const productPrice = Number(productPriceInput.value);
+  const productQty = Number(productQtyInput.value);
   const newProduct = {name: productName, price: productPrice, quantity: productQty}
   products.push(newProduct);
 
@@ -62,14 +62,17 @@ function displayProductList(product){
 // Function to update the total price
 function updateTotalPrice(amount, qty) {
   totalPrice += amount * qty;
+  console.log(totalPrice)
   totalPriceSpan.textContent = totalPrice.toFixed(2);
+  console.log(totalPriceSpan.textContent)
 }
  
 // Function to remove an item
 function removeItem(item, itemElement) {
   console.log(item);
   const price = item.price;
-  updateTotalPrice(-price);
+  const qty = item.quantity;
+  updateTotalPrice(-price, qty);
   itemElement.remove();
 }
 
