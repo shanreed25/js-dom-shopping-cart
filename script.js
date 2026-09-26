@@ -1,9 +1,16 @@
 const productNameInput = document.getElementById('product-name');
 const productPriceInput = document.getElementById('product-price');
+const qtyInput = document.getElementById("quantity");
 const addProductButton = document.getElementById('add-product');
+const increaseBtn = document.getElementById("increase");
+const decreaseBtn = document.getElementById("decrease");
 const cart = document.getElementById('cart');
 const totalPriceSpan = document.getElementById('total-price');
- 
+
+const MIN = Number(qtyInput.min);
+const MAX = Number(qtyInput.max);
+
+
 let totalPrice = 0;
 let products = []
 
@@ -74,3 +81,11 @@ addProductButton.addEventListener("click", function(e){
   
 })
 
+
+increaseBtn.addEventListener("click", function() {
+    console.log("increase");
+});
+
+decreaseBtn.addEventListener("click", function() {
+  console.log("decrease");
+});
